@@ -1,85 +1,67 @@
-# 🤖 OpenRobotKit
+# OpenRobotKit
 
-OpenRobotKit is an open-source robotics toolkit for Arduino, ESP32 and Python.
+An early-stage robotics learning toolkit, starting with a small Python motor
+state abstraction. Arduino and ESP32 support are planned.
 
-Its goal is to provide developers, students and robotics enthusiasts with reusable tools, libraries and examples for building robots faster.
+## What works today
 
----
+[`Motor`](src/motor.py) stores a speed value in memory. You can set an initial
+speed, change it with `set_speed()`, and reset it to zero with `stop()`.
+It does not communicate with a motor driver or control physical hardware.
+Speed units, ranges, and input validation are not defined yet.
 
-# 🚀 Features
+## Run the motor example
 
-- Arduino utilities
-- ESP32 utilities
-- Motor control
-- PID controller
-- Sensor calibration
-- Serial communication
-- Computer vision tools
-- AI utilities
-- Robotics examples
+From a checkout of this repository, with Python 3 installed:
 
----
-
-# 📦 Project Structure
-
-```
-OpenRobotKit/
-│
-├── docs/
-├── examples/
-├── src/
-├── tests/
-├── images/
-└── README.md
+```sh
+git clone https://github.com/mehmetakifcakr/OpenRobotKit.git
+cd OpenRobotKit
+python3 -m examples.motor_demo
 ```
 
----
+On Windows, use `python` if that is your Python 3 command. No third-party
+packages, hardware, credentials, or network connection are needed to run the
+example after cloning.
 
-# 🛠 Planned Modules
+Expected output:
 
-- Motor Controller
-- PID Controller
-- Ultrasonic Sensor
-- Color Sensor
-- Bluetooth Communication
-- WiFi Communication
-- Camera Module
-- OpenCV Helpers
-- YOLO Helpers
-- MQTT
+```text
+Initial speed: 0
+Updated speed: 50
+Stopped speed: 0
+```
 
----
+The value `50` is illustrative, not a percentage or a hardware command.
+See [`examples/motor_demo.py`](examples/motor_demo.py) for the complete example.
 
-# 📚 Documentation
+## Current source layout
 
-Documentation will be expanded during development.
+```text
+src/motor.py             In-memory Motor class
+examples/motor_demo.py   Runnable, hardware-free example
+docs/                   Documentation placeholders
+LICENSE                 MIT license
+```
 
----
+There is no automated test suite or CI workflow yet. The example demonstrates
+state changes only; it does not validate physical motor behavior.
 
-# 🤝 Contributing
+## Planned work
 
-Everyone is welcome to contribute to this project by submitting pull requests, reporting issues or suggesting improvements.
+The following are ideas for future development, not implemented features:
 
----
+- Define motor speed units, valid inputs, and behavior tests.
+- Add Arduino and ESP32 hardware adapters with explicit wiring examples.
+- Explore PID control, sensor calibration, and serial communication.
+- Add robotics examples as the underlying modules become available.
 
-# 📅 Roadmap
+## Contributing
 
-- Version 0.1
-    - Project structure
-    - Documentation
-    - Examples
+Small, reproducible improvements are welcome. Describe the problem, keep the
+change focused, and include the command and output used to check it. Distinguish
+software-only checks from tests performed on actual hardware.
 
-- Version 0.5
-    - Arduino modules
-    - ESP32 modules
+## License
 
-- Version 1.0
-    - Stable release
-    - Full documentation
-    - Test coverage
-
----
-
-# 📄 License
-
-MIT License
+[MIT](LICENSE).
